@@ -1,26 +1,52 @@
-# 4RCHL1NX - GUIDE to install ARCH Linux
+# 4rch L1nux Installation Guide
 
-- network connection
-	- ip link
-	- ping archlinux.com
+#### NOTE: This is basically the [4rch 1inux installation guide](https://wiki.archlinux.org/title/Installation_guide) but in a more simpler manner.
 
-- timedatectl 
-	- timedatectl set-ntp true
-	- timedatectl status
-	- timedatectl list-timezones
-	- timedatectl set-timezone Region/City
+### Network connection
+To ensure the network interface is listed and enabled
+```bash
+ip link
+```
+To check the connection
+```bash
+ping google.com
+```
 
-- partition the storage
-	- fdisk -l (lists all the devices)
-	- fdisk /dev/sda ( <- /dev/sda is the name of my device change it with what is displayed on the fdisk -l command )
-	- Type g ( to create a GPT partition table )
-	- EFI  - Type n, then 1, press ENTER, then type +550M
-	- SWAP - Type n, then 2, press ENTER, type +2G
-	- Norm - Type n, then 3, press ENTER, press ENTER
+### Setting up the system clock
+
+To set the system clock
+```bash
+timedatectl set-ntp true
+```
+To check the service status of the clock
+```bash
+timedatectl status
+```
+To list out all the timezones
+```bash
+timedatectl list-timezones
+```
+To set the selected timezone
+```bash
+timedatectl set-timezone
+```
+
+### Partitioning the disks
+
+To list all the block devices
+```bash
+fdisk -l
+```
+
+fdisk /dev/the_disk
+Type g ( to create a GPT partition table )
+EFI  - Type n, then 1, press ENTER, then type +550M
+SWAP - Type n, then 2, press ENTER, type +2G
+Norm - Type n, then 3, press ENTER, press ENTER
 
 - Changing the partition filesystem
-	- Type t, then 1, then 1	<- Changes the filesystem to EFI
-	- Type t, then 2, then 19	<- Changes the filesystem to Swap
+	- Type t, then 1, then 1
+	- Type t, then 2, then 19
 
 - Write the table
 	- Type w
@@ -64,19 +90,18 @@
 	- nano /etc/host
 	- add the following lines
 
->	127.0.0.1	localhost
-  
->	::1	localhost
-	
->	127.0.1.1	<hostname>.localdomain	<hostname>
-
+```bash
+	127.0.0.1 		localhost
+	::1  			localhost
+	127.0.1.1		<hostname>.localdomain		<hostname>
+```
 
 - create users and password
-	- passwd, type the new passwd
+	- passwd, tyoe the new passwd
 	- useradd -m <username>
 	- passwd <username>
 
-- need to <username> to the wheel group to give him sudo previlages
+- need to "<username>" to the wheel group to give him sudo previlages
 	- usermod -aG wheel,audio,video,optical,storage <username>
 
 - editing the sudo file
@@ -91,6 +116,8 @@
 	- grub-install --target=x86_64-efi --bootloader-it=grub_uefi --recheck
 	- grub-mkconfig -o /boot/frub/grub.cfg
 
+- pacman -S 
+
 - Enable 
 	- systemctl enable NetworkManager
 
@@ -103,3 +130,5 @@
 - Reboot the system
 
 - login as the <usernane>
+
+- 
