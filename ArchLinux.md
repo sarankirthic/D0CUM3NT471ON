@@ -93,9 +93,9 @@ Norm - Type n, then 3, press ENTER, press ENTER
 	- add the following lines
 
 ```bash
-	127.0.0.1 		localhost
-	::1  			localhost
-	127.0.1.1		<hostname>.localdomain		<hostname>
+	127.0.0.1 	localhost
+	::1  		localhost
+	127.0.1.1	<hostname>.localdomain		<hostname>
 ```
 
 - create users and password
