@@ -1,6 +1,9 @@
 # 4rch L1nux Installation Guide
 
-EFI Installation of Arch Linux
+Installation of Arch Linux 
+
+This can act as a guide during the installation process
+
 **NOTE: This is compressed guide of the [4rch 1inux installation guide](https://wiki.archlinux.org/title/Installation_guide)**
 
 ### Network connection
